@@ -1,0 +1,50 @@
+<p><%= notice %></p>
+
+<p class = "container">
+  <strong>property name:</strong>
+  <%= @property.name %>
+</p>
+
+<p class = "container">
+  <strong>rent:</strong>
+  <%= @property.rent %>
+</p>
+
+<p class = "container">
+  <strong>address:</strong>
+  <%= @property.address %>
+</p>
+
+<p class = "container">
+  <strong>age:</strong>
+  <%= @property.age %>
+</p>
+
+<p class = 'border'>
+  <strong>remarks:</strong>
+  <%= @property.content %>
+</p>
+
+<% @tag_number = 1 %>
+<% @property.stations.each do |station| %>
+  <h3>line_name<%= @tag_number %></h3>
+  <% @tag_number += 1 %>
+
+    <p class = "container">
+      <strong>line_name:</strong>
+      <%= station.line_name %>
+    </p>
+    <p class = "container">
+      <strong>line_name:</strong>
+      <%= station.station_name %>
+    </p>
+
+    <p class = "container">
+      <strong>minutes_on_foot:</strong>
+      <%= station.minutes_on_foot %>
+    </p>
+
+<% end %>
+
+<%= link_to 'edit', edit_property_path(@property) %> |
+<%= link_to 'back', properties_path(@property) %>

@@ -1,0 +1,63 @@
+<%= form_with(model: @property, local: true) do |form| %>
+  <% if property.errors.any? %>
+    <div class="error_explanation">
+      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+        <% property.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rent %>
+    <br>
+    <%= form.number_field :rent %>JPY
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <br>
+    <%= form.text_area :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <br>
+    <%= form.number_field :age %>Years/Years old
+  </div>
+
+  <div class="border_new">
+    <%= form.label :content %>
+    <br>
+    <%= form.text_area :content %>
+  </div>
+
+  <% @tag_number = 1 %>
+  <%= form.fields_for :station do |station| %>
+    <h2>Nearest station<%= @tag_number %></h2>
+    <% @tag_number += 1 %>
+    <div class="line_name">
+      <%= station.label :station_name %><br>
+      <%= station.text_field :line_name %>
+    </div>
+    <div class="station_name">
+      <%= station.label :line_name %><br>
+      <%= station.text_field :station_name %>
+    </div>
+    <div class="minutes_on_foot">
+      <%= station.label :minutes_on_foot %><br>
+      <%= station.text_field :minutes_on_foot %>min/mins<br>
+    </div>
+  <% end %>
+  <br>
+  <%= form.submit 'register' %>
+<% end %>
