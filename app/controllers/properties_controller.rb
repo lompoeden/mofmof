@@ -7,7 +7,7 @@ class PropertiesController < ApplicationController
 
     def new
       @property = Property.new
-      2.times { @property.stations.build }
+      #2.times { @property.stations.build }
      end
 
      def create
@@ -27,7 +27,7 @@ class PropertiesController < ApplicationController
     end
 
     def edit
-      @property.stations.build
+    1.times { @property.stations.build }
     end
 
     def update
@@ -37,7 +37,7 @@ class PropertiesController < ApplicationController
         render :edit
       end
     end
-
+  end
     def destroy
       @property.destroy
       respond_to do |format|
@@ -50,6 +50,5 @@ class PropertiesController < ApplicationController
           @property = Property.find(params[:id])
         end
         def property_params
-          params.require(:property).permit(:name, :rent,:address,:age, :remarks, :content, :stations_attributes [ :station_name,:line_name,:minutes_on_foot, :id ])
+          params.require(:property).permit(:property, :rent, :address, :age, :remarks, :stations_attributes [ :station_name, :line_name, :minutes_on_foot, :id ])
     end
-  end

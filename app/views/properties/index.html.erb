@@ -22,9 +22,9 @@
         <td><%= property.address %></td>
         <td><%= property.age %>年</td>
         <td><%= property.content %></td>
-        <td><%= link_to 'details', property %></td>
+        <td><%= link_to 'show', property , class: "btn btn-primary" %></td>
         <td><%= link_to 'edit', edit_property_path(property) %></td>
-        <td><%= link_to 'delete', property, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+        <td><%= link_to 'delete', property, method: :delete, data: { confirm: 'you sure？' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'register', new_property_path %>
+<%= link_to 'New Property', new_property_path %>
