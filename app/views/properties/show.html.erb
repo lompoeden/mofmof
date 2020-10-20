@@ -1,50 +1,47 @@
-<p><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-<p class = "container">
-  <strong>property:</strong>
+<p>
+  <strong>Property:</strong>
   <%= @property.property %>
 </p>
 
-<p class = "container">
-  <strong>rent:</strong>
+<p>
+  <strong>Rent:</strong>
   <%= @property.rent %>
 </p>
 
-<p class = "container">
-  <strong>address:</strong>
+<p>
+  <strong>Address:</strong>
   <%= @property.address %>
 </p>
 
-<p class = "container">
+<p>
   <strong>age:</strong>
   <%= @property.age %>
 </p>
 
-<p class = 'border'>
+<p>
   <strong>Remarks:</strong>
   <%= @property.remarks %>
 </p>
+<hr>
+<% @property.stations.each do |poor| %>
+  <h2><b>Nearest station </b></h2>
+  <p>
+    <strong>Name line:</strong>
+    <%= poor.line_name %>
+  </p>
 
-<% @tag_number = 1 %>
-<% @property.stations.each do |station| %>
-  <h3>line_name<%= @tag_number %></h3>
-  <% @tag_number += 1 %>
+  <p>
+    <strong>Station name:</strong>
+    <%= poor.station_name %>
+  </p>
 
-    <p class = "container">
-      <strong>line_name:</strong>
-      <%= station.line_name %>
+  <p>
+    <strong>How many minutes walks:</strong>
+    <%= poor.minutes_on_foot %>
     </p>
-    <p class = "container">
-      <strong>line_name:</strong>
-      <%= station.station_name %>
-    </p>
-
-    <p class = "container">
-      <strong>minutes_on_foot:</strong>
-      <%= station.minutes_on_foot %>
-    </p>
-
 <% end %>
 
-<%= link_to 'edit', edit_property_path(@property) %> |
-<%= link_to 'back', properties_path(@property) %>
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>

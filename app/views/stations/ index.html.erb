@@ -1,15 +1,14 @@
 <p><%= notice %></p>
 
-<h1>station list</h1>
+<h1>stations</h1>
 
 <table>
   <thead>
     <tr>
-      <th>station name</th>
-      <th>rent</th>
-      <th>address</th>
-      <th>age</th>
-      <th>remarks</th>
+      <th>line name</th>
+      <th>Station name</th>
+      <th>minutes on foot</th>
+      <th>Property</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,14 +16,13 @@
   <tbody>
     <% @properties.each do |station| %>
       <tr>
-        <td><%= station.name %></td>
-        <td><%= station.rent %>円</td>
-        <td><%= station.address %></td>
-        <td><%= station.age %>年</td>
-        <td><%= station.content %></td>
-        <td><%= link_to 'show', station %></td>
-        <td><%= link_to 'edit', edit_station_path(station) %></td>
-        <td><%= link_to 'delete', station, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+        <td><%= station.line_name %></td>
+        <td><%= station.station_name %>円</td>
+        <td><%= station.minutes_on_foot %></td>
+        <td><%= station.property %></td>
+        <td><%= link_to 'Show', station %></td>
+        <td><%= link_to 'Edit', edit_station_path(station) %></td>
+        <td><%= link_to 'Destroy', station, method: :delete, data: { confirm: 'you sure？' } %></td>
       </tr>
     <% end %>
   </tbody>

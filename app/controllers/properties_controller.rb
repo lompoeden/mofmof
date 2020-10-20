@@ -27,17 +27,21 @@ class PropertiesController < ApplicationController
     end
 
     def edit
-    1.times { @property.stations.build }
+  #  1.times { @property.stations.build }
     end
 
     def update
-      if @property.update(property_params)
-        redirect_to properties_path, notice: "property was updated successfully！"
-      else
-        render :edit
+      respond_to do |format|
+        if @property.update(property_params)
+          format.html { redirect_to @property, notice: 'Property was successfully updated.' }
+          format.json { render :show, status: :ok, location: @property }
+        else
+          format.html { render :edit }
+          format.json { render json: @property.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
+
     def destroy
       @property.destroy
       respond_to do |format|
@@ -50,5 +54,7 @@ class PropertiesController < ApplicationController
           @property = Property.find(params[:id])
         end
         def property_params
-          params.require(:property).permit(:property, :rent, :address, :age, :remarks, :stations_attributes [ :station_name, :line_name, :minutes_on_foot, :id ])
+          params.require(:property).permit(:property, :rent, :address, :age, :remarks, :id, :station_name, :line_name, :minutes_on_foot,)
+
     end
+  end
